@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paniksyndrom — Ivan Wahlund</title>
+<meta name="description" content="Information om paniksyndrom (panikångest) och Clarks kognitiva behandling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream: #F5EDE9;
+  --cream-alt: #ECDFD8;
+  --ink: #2B2220;
+  --ink-soft: #6B5850;
+  --olive: #7A6A4E;
+  --olive-deep: #5E5139;
+  --gold: #B97B6C;
+  --dark: #241C1A;
+  --dark-text: #F5EDE9;
+  --line: #DCCFC7;
+  --max: 700px;
+
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --ease: cubic-bezier(.4,0,.2,1);
+  --transition-fast: 0.15s var(--ease);
+
+  --fs-2xs: 0.85rem;
+  --fs-xs: 0.92rem;
+  --fs-base: 1rem;
+  --fs-md: 1.1rem;
+  --fs-lg: 1.05rem;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3{
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 0.5em 0;
+  color: var(--ink);
+}
+
+a{ color: var(--olive-deep); }
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wrap{ max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+.prose{ max-width: var(--max); }
+
+header.site{
+  background: var(--dark);
+  padding: 20px 0;
+}
+header.site .wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand{
+  font-family: 'Fraunces', serif;
+  font-size: var(--fs-md);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--dark-text);
+  text-decoration: none;
+}
+nav.primary ul{
+  display: flex;
+  gap: 26px;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+nav.primary li{ position: relative; }
+nav.primary a{
+  color: var(--dark-text);
+  text-decoration: none;
+  font-size: var(--fs-xs);
+  opacity: 0.92;
+  transition: opacity var(--transition-fast);
+}
+nav.primary a:hover{ opacity: 1; text-decoration: underline; }
+nav.primary .dropdown-toggle{ display:inline-flex; align-items:center; gap:5px; cursor: pointer; }
+nav.primary .caret{ font-size: 0.65em; opacity: 0.75; }
+nav.primary .dropdown-menu{
+  list-style: none;
+  margin: 0; padding: 8px 0;
+  position: absolute;
+  top: 100%; left: 0;
+  margin-top: 10px;
+  min-width: 260px;
+  background: var(--dark);
+  border: 1px solid rgba(242,238,225,0.14);
+  border-radius: var(--radius-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+  z-index: 40;
+}
+nav.primary li:hover > .dropdown-menu,
+nav.primary li:focus-within > .dropdown-menu{
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+nav.primary .dropdown-menu li{ position: static; }
+nav.primary .dropdown-menu a{
+  display: block;
+  padding: 9px 18px;
+  white-space: nowrap;
+  opacity: 0.82;
+  font-size: var(--fs-xs);
+}
+nav.primary .dropdown-menu a:hover{ opacity: 1; background: rgba(242,238,225,0.06); text-decoration: none; }
+.nav-toggle{ display:none; }
+.menu-btn{
+  display:none;
+  background:none; border:1px solid rgba(242,238,225,0.5); border-radius: var(--radius-md);
+  padding: 8px 12px; font-size: var(--fs-xs); cursor:pointer; color: var(--dark-text);
+}
+@media (max-width: 720px){
+  header.site .wrap{ position: relative; flex-wrap: wrap; }
+  nav.primary{
+    display:none;
+    width: 100%;
+    background: var(--dark);
+    padding: 10px 0 4px;
+  }
+  nav.primary ul{ flex-direction: column; padding: 8px 0 0; gap: 16px; }
+  nav.primary .dropdown-menu{
+    position: static;
+    opacity: 1; visibility: visible; transform: none;
+    background: transparent;
+    border: none;
+    padding: 10px 0 0 16px;
+    margin-top: 10px;
+    min-width: 0;
+  }
+  nav.primary .dropdown-menu li + li{ margin-top: 10px; }
+  nav.primary .dropdown-menu a{ padding: 0; font-size: var(--fs-2xs); opacity: 0.75; }
+  .nav-toggle:checked ~ nav.primary{ display:block; }
+  .menu-btn{ display:inline-block; }
+}
+
+.page-hero{
+  background: var(--dark);
+  padding: 56px 0 64px;
+}
+.page-hero .kicker{
+  color: var(--dark-text);
+  opacity: 0.85;
+  font-size: var(--fs-xs);
+  margin-bottom: 14px;
+}
+.page-hero h1{
+  color: var(--dark-text);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.05;
+  margin-bottom: 0.4em;
+  max-width: 16ch;
+}
+.page-hero .lede{
+  color: var(--dark-text);
+  opacity: 0.9;
+  font-size: var(--fs-md);
+  max-width: 46ch;
+}
+
+main{ padding: 64px 0 84px; }
+main h2{ font-size: 1.4rem; margin-top: 2em; }
+main h2:first-child{ margin-top: 0; }
+main p{ margin: 0 0 1em 0; }
+main ul.tecken{
+  margin: 0 0 1.2em 0;
+  padding: 0;
+  list-style: none;
+}
+main ul.tecken li{
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+main ul.tecken li::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 19px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+main ul.links{
+  margin: 0; padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 32px;
+}
+main ul.links li{ padding: 8px 0; break-inside: avoid; }
+
+.btn{
+  display: inline-block;
+  background: var(--olive);
+  color: #fff;
+  text-decoration: none;
+  padding: 13px 26px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  border: 1px solid var(--olive);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.btn:hover{ background: var(--olive-deep); transform: translateY(-2px); }
+
+/* FAQ */
+.faq-category{ margin-top: 2.4em; }
+.faq-category:first-child{ margin-top: 0; }
+.faq-category h2{ font-size: 1.3rem; margin-bottom: 0.6em; }
+.faq-list{ max-width: 100%; }
+.faq-item{ border-bottom: 1px solid var(--line); }
+.faq-item summary{
+  cursor: pointer;
+  padding: 18px 0;
+  font-family: 'Fraunces', serif;
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.faq-item summary::-webkit-details-marker{ display: none; }
+.faq-item summary::after{
+  content: "+";
+  font-size: 1.3rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+.faq-item[open] summary::after{ transform: rotate(45deg); }
+.faq-item p{ color: var(--ink-soft); padding: 0 0 18px 0; margin: 0; max-width: 62ch; }
+.cta{ margin-top: 2.4em; padding-top: 2em; border-top: 1px solid var(--line); }
+.cta p{ color: var(--ink-soft); margin-bottom: 18px; }
+
+footer{
+  background: var(--dark);
+  color: rgba(242,238,225,0.6);
+  padding: 40px 0 50px;
+  font-size: var(--fs-2xs);
+  border-top: 1px solid rgba(242,238,225,0.12);
+}
+footer .grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
+footer h4{
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--dark-text);
+  font-size: var(--fs-2xs);
+  margin: 0 0 10px 0;
+}
+footer p{ margin: 0 0 6px 0; }
+footer ul{ list-style:none; margin:0; padding:0; }
+footer li{ margin-bottom: 6px; }
+footer a{ color: rgba(242,238,225,0.6); }
+@media (max-width: 700px){ footer .grid{ grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ivan Wahlund</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="menu-btn" aria-label="Öppna meny">Meny</label>
+    <nav class="primary" aria-label="Huvudmeny">
+      <ul>
+        <li><a href="index.html#om-mig">Om mig</a></li>
+        <li><a href="index.html#arbetssatt">Så går det till</a></li>
+        <li>
+          <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Psykologisk behandling <span class="caret" aria-hidden="true">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="kbt.html">Vad är KBT?</a></li>
+            <li><a href="depression.html">Depression</a></li>
+            <li><a href="paniksyndrom.html">Paniksyndrom (panikångest)</a></li>
+            <li><a href="social-fobi.html">Social fobi (social ångest)</a></li>
+            <li><a href="gad.html">GAD (generaliserad ångest)</a></li>
+            <li><a href="emetofobi.html">Emetofobi</a></li>
+            <li><a href="sorg.html">Sorg (förlängd sorgreaktion)</a></li>
+            <li><a href="utmattningssyndrom.html">Stress och utmattning</a></li>
+            <li><a href="ocd.html">Tvångssyndrom (OCD)</a></li>
+            <li><a href="perfektionism.html">Perfektionism</a></li>
+            <li><a href="sjalvkansla.html">Negativ självbild</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#omraden">Områden</a></li>
+        <li><a href="index.html#praktiskt">Praktisk information</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Psykologisk behandling</p>
+    <h1>Paniksyndrom</h1>
+    <p class="lede">Paniksyndrom innebär återkommande, oväntade panikattacker och en ihållande rädsla för nya attacker.</p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap prose">
+    <h2>Vad kännetecknar paniksyndrom?</h2>
+    <p>Ett paniksyndrom innebär återkommande panikattacker, det vill säga plötsliga anfall av intensiv rädsla som når sin topp inom några minuter. För att kriterierna ska vara uppfyllda krävs vanligtvis att minst en av attackerna följts av minst en månads ihållande oro för nya attacker, eller ett tydligt undvikandebeteende kopplat till rädslan för attackerna, till exempel att undvika platser eller situationer man förknippar med tidigare anfall.</p>
+    <ul class="tecken">
+      <li>Plötsliga anfall av stark rädsla eller obehag som når sin topp snabbt</li>
+      <li>Hjärtklappning, andnöd, yrsel eller tryck över bröstet under anfallen</li>
+      <li>Rädsla för att tappa kontrollen, svimma eller dö under ett anfall</li>
+      <li>Ihållande oro för nya attacker mellan anfallen</li>
+      <li>Undviker platser eller situationer kopplade till tidigare attacker</li>
+    </ul>
+
+    <h2>Behandling: Clarks kognitiva behandling för panikångest</h2>
+    <p>Enligt den kognitiva modellen för panik, utvecklad av psykologen David Clark, uppstår panikattacker när kroppsliga eller mentala förnimmelser feltolkas som tecken på en omedelbar katastrof, till exempel att hjärtklappning tolkas som en hjärtattack. Den feltolkningen driver upp ångesten ytterligare, vilket förstärker de kroppsliga symtomen i en självförstärkande cirkel. Behandlingen syftar till att bryta den cirkeln.</p>
+    <ul class="tecken">
+      <li>Kartläggning av den specifika katastroftolkning som utlöser paniken</li>
+      <li>Beteendeexperiment som testar tolkningen mot verkligheten, till exempel genom att medvetet framkalla kroppsliga känningar</li>
+      <li>Successiv nedtrappning av säkerhetsbeteenden som annars vidmakthåller rädslan</li>
+      <li>Interoceptiv exponering: att stegvis öva på att uppleva kroppsliga förnimmelser utan att fly situationen</li>
+    </ul>
+
+    <div class="cta">
+      <p>Vill du boka ett inledande samtal, eller har du frågor om hur behandlingen skulle se ut för dig?</p>
+      <a class="btn" href="index.html#kontakt">Boka tid</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h4>Ivan Wahlund Psykologi</h4>
+        <p>Leg. psykolog · Enskild firma</p>
+        <p>Org.nr: [ORG.NR HÄR]</p>
+        <p>kontakt@ivanwahlund.se</p>
+      </div>
+      <div>
+        <h4>Verksamheten</h4>
+        <ul>
+          <li>Anmäld hos IVO:s vårdgivarregister</li>
+          <li><a href="index.html#">Patientsäkerhetsberättelse</a></li>
+          <li><a href="index.html#">Integritetspolicy (GDPR)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Genvägar</h4>
+        <ul>
+          <li><a href="index.html#om-mig">Om mig</a></li>
+          <li><a href="index.html#omraden">Områden</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('nav.primary > ul > li > a:not(.dropdown-toggle)').forEach(function(link){
+    link.addEventListener('click', function(){
+      var toggle = document.getElementById('nav-toggle');
+      if(toggle) toggle.checked = false;
+    });
+  });
+</script>
+
+</body>
+</html>
