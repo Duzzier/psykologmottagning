@@ -72,6 +72,33 @@
   .wrap{ max-width: 1120px; margin: 0 auto; padding: 0 28px; }
   .prose{ max-width: var(--max); }
   .prose p{ font-size: var(--fs-md); }
+  .om-mig-grid{
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .om-mig-grid .prose{ max-width: none; }
+  .om-mig-photo{
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    background: var(--cream-alt);
+  }
+  .om-mig-photo img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  @media (max-width: 900px){
+    .om-mig-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .om-mig-photo{ order: -1; max-width: 360px; margin: 0 auto; }
+  }
 
   /* Header */
   header.site{
@@ -266,7 +293,7 @@
     letter-spacing: -0.01em;
   }
   .hero .lede{
-    max-width: 40ch;
+    max-width: 54ch;
     color: var(--ink-soft);
     font-size: var(--fs-md);
     margin-bottom: 30px;
@@ -521,7 +548,7 @@
     <div class="hero-content">
       <p class="hero-kicker">Legitimerad psykolog för samtal online</p>
       <h1>Ivan<br>Wahlund</h1>
-      <p class="lede">Individuell terapi online, var du än befinner dig. Trygga, strukturerade samtal med tydlig riktning mot dina mål, utan väntetider eller rigida ramar.</p>
+      <p class="lede">Nästan alla hamnar någon gång i en livssituation de har svårt att hantera. Ibland räcker de egna resurserna, men ibland behövs stöd för att navigera vidare och växa som människa. Kognitiv beteendeterapi har starkt forskningsstöd och är hjälpsam även vid livskriser, ensamhetskänslor, relationsproblem och sviktande självkänsla. Jag erbjuder terapi online, utan väntetider eller rigida ramar.</p>
       <div class="btn-row">
         <!-- KADDIO-INTEGRATION: byt href nedan mot din bokningslänk från Kaddio,
              t.ex. https://boka.kaddio.com/ivanwahlund, eller ersätt <a> med
@@ -551,10 +578,16 @@
 
   <section id="om-mig">
     <div class="wrap">
-      <div class="prose">
-        <h2>Om mig</h2>
-        <p>Jag heter Ivan Wahlund och är legitimerad psykolog, utbildad vid Psykologprogrammet på Karolinska Institutet, med inriktning mot vuxna och tonåringar i livets olika skeden, från akut kris till långsiktig personlig utveckling. Jag har erfarenhet av både kliniskt arbete och forskning inom psykologi, och har arbetat med både barn och vuxna, inom både psykiatrin och primärvården. Samtal hålls på svenska eller engelska. Min utgångspunkt är att terapi ska vara begripligt och konkret: du ska veta varför vi gör det vi gör, och vi utvärderar tillsammans om det för dig framåt.</p>
-        <p>Jag arbetar integrativt med grund i kognitiv beteendeterapi (KBT) och kompletterar med metoder anpassade efter din situation, snarare än en färdig mall.</p>
+      <div class="om-mig-grid">
+        <div class="prose">
+          <h2>Om mig</h2>
+          <p>Jag är legitimerad psykolog som har gått psykologprogrammet på Karolinska Institutet och jag har arbetat både på BUP och inom specialistpsykiatrin för vuxna. Utöver mitt kliniska arbete har jag även jobbat på LSS-boende och med psykologisk forskning på KI. De huvudprinciper som alltid har präglat mina psykologiska behandlingar är värme, målmedvetenhet och forskningsbaserade komponenter. Det är min bestämda uppfattning att terapi som innehåller dessa faktorer kan hjälpa alla som önskar uppnå meningsfull förändring.</p>
+          <p>Mitt terapeutiska hantverk är inte fäst vid en specifik mall, utan skräddarsys efter ditt behov. Jag tar hänsyn till olika faktorer som påverkar ditt mående och tillsammans formulerar vi en karta som kan förklara din situation och kan bana väg för terapeutisk förändring.</p>
+          <p class="section-link"><a href="#arbetssatt">Läs mer om mitt arbetssätt</a></p>
+        </div>
+        <div class="om-mig-photo">
+          <img src="assets/images/skogsback-web.jpg" alt="Bäck som rinner genom grön skog" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
