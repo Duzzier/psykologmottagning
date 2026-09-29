@@ -193,6 +193,13 @@ main h2{ font-size: 1.55rem; margin-top: 2em; }
 main h2:first-child{ margin-top: 0; }
 main h3{ font-size: 1.2rem; margin: 1.6em 0 0.4em; }
 main p{ margin: 0 0 1em 0; }
+.kbt-diagram{ margin: 2em 0; text-align: center; }
+.kbt-diagram svg{ width: 100%; max-width: 420px; height: auto; }
+.kbt-node{ fill: var(--cream-alt); stroke: var(--olive); stroke-width: 2.5; }
+.kbt-line{ stroke: var(--olive); stroke-width: 2.5; fill: none; }
+.kbt-arrow{ fill: var(--olive); }
+.kbt-label{ font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 500; fill: var(--ink); text-anchor: middle; }
+.kbt-diagram figcaption{ margin-top: 12px; font-size: var(--fs-2xs); color: var(--ink-soft); max-width: 46ch; margin-left: auto; margin-right: auto; }
 main ul.tecken{
   margin: 0 0 1.2em 0;
   padding: 0;
@@ -323,6 +330,30 @@ footer a{ color: rgba(22,25,27,0.6); }
     <p>Metoden utvecklades på 1970-talet för att behandla depression och har idag vidareutvecklats till att behandla en rad olika problemområden. KBT är den mest beforskade psykologiska behandlingsformen, och har bäst forskningsstöd för de flesta psykologiska tillstånden.</p>
     <p>KBT fungerar idag som ett paraplybegrepp som rymmer flera terapiformer. Man brukar tala om "tredje vågens KBT", som innehåller modernare inriktningar såsom Acceptance and Commitment Therapy (ACT), dialektisk beteendeterapi (DBT) och schematerapi. Jämfört med traditionell KBT betonar dessa terapiformer i högre utsträckning hur man förhåller sig till sina tankar, snarare än att försöka förändra dem.</p>
 
+    <figure class="kbt-diagram">
+      <svg viewBox="0 0 500 420" role="img" aria-labelledby="kbtDiagramTitle" xmlns="http://www.w3.org/2000/svg">
+        <title id="kbtDiagramTitle">Tankar, känslor och beteenden påverkar varandra</title>
+        <defs>
+          <marker id="arrowOut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path class="kbt-arrow" d="M0,0 L10,5 L0,10 Z"></path>
+          </marker>
+          <marker id="arrowIn" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path class="kbt-arrow" d="M10,0 L0,5 L10,10 Z"></path>
+          </marker>
+        </defs>
+        <line class="kbt-line" x1="220.87" y1="127.44" x2="129.13" y2="292.56" marker-start="url(#arrowIn)" marker-end="url(#arrowOut)"></line>
+        <line class="kbt-line" x1="279.13" y1="127.44" x2="370.87" y2="292.56" marker-start="url(#arrowIn)" marker-end="url(#arrowOut)"></line>
+        <line class="kbt-line" x1="160" y1="345" x2="340" y2="345" marker-start="url(#arrowIn)" marker-end="url(#arrowOut)"></line>
+        <circle class="kbt-node" cx="250" cy="75" r="60"></circle>
+        <circle class="kbt-node" cx="100" cy="345" r="60"></circle>
+        <circle class="kbt-node" cx="400" cy="345" r="60"></circle>
+        <text class="kbt-label" x="250" y="83">Tankar</text>
+        <text class="kbt-label" x="100" y="353">Känslor</text>
+        <text class="kbt-label" x="400" y="353">Beteenden</text>
+      </svg>
+      <figcaption>Inom KBT ses tankar, känslor och beteenden som ömsesidigt sammankopplade. En förändring i det ena påverkar ofta de andra.</figcaption>
+    </figure>
+
     <h2>I KBT ingår alltid:</h2>
     <h3>Psykoedukation</h3>
     <p>I början av din terapi går vi alltid igenom hur man kan förstå dina svårigheter. Genom att få bättre förståelse för vad som vidmakthåller din problematik kommer det att bli lättare att nå förändring.</p>
@@ -336,32 +367,6 @@ footer a{ color: rgba(22,25,27,0.6); }
     <p>Genom att analysera situationer där du upplever starka känslor kan vi bättre förstå hur dina beteenden, tankar och känslor påverkar varandra. Med detta som utgångspunkt kan vi jobba med hur du kan förändra dina beteenden i dessa situationer.</p>
     <h3>Hemuppgifter</h3>
     <p>Att göra övningar och fylla i registreringsformulär mellan besök är en viktig del av KBT. Det gör att du tillämpar det du lär dig i din vardag och ger information om hur din situation ser ut. Forskning visar att KBT med hemuppgifter ger betydligt bättre effekt än KBT utan hemuppgifter.</p>
-
-    <h2>Så går det till</h2>
-    <ul class="tecken">
-      <li>Vi kartlägger din situation och sätter gemensamma mål</li>
-      <li>Vi arbetar med konkreta övningar mellan sessionerna</li>
-      <li>Vi följer upp och justerar planen löpande</li>
-      <li>Behandlingen är tidsbegränsad och utvärderas kontinuerligt</li>
-    </ul>
-
-    <h2>Områden jag arbetar med</h2>
-    <ul class="links">
-      <li>Depression och nedstämdhet</li>
-      <li>Alla typer av ångestbesvär</li>
-      <li>Emetofobi</li>
-      <li>Sorg</li>
-      <li>Stressrelaterad ohälsa</li>
-      <li>Tvångssyndrom</li>
-      <li>Perfektionism</li>
-      <li>Negativ självbild</li>
-      <li>Specifika fobier</li>
-      <li>Minoritetsstress</li>
-      <li>Krishantering</li>
-      <li>Sömnproblem</li>
-      <li>Ilska och aggression</li>
-      <li>Prokrastinering</li>
-    </ul>
 
     <div class="cta">
       <p>Vill du boka ett inledande samtal, eller har du frågor om hur behandlingen skulle se ut för dig?</p>
