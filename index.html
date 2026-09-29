@@ -100,6 +100,77 @@
     .om-mig-photo{ order: -1; max-width: 360px; margin: 0 auto; }
   }
 
+  /* Legitimerad psykolog band */
+  .credential-band{
+    position: relative;
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .credential-band .band-bg{
+    position: absolute;
+    inset: 0;
+    background: url('assets/images/legitimerad-placeholder.jpg') center 25%/cover no-repeat;
+  }
+  .credential-band .band-scrim{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(22,25,27,0.93) 0%, rgba(22,25,27,0.82) 42%, rgba(22,25,27,0.45) 100%);
+  }
+  .credential-band .wrap{
+    position: relative;
+    z-index: 1;
+    padding: 64px 28px;
+    width: 100%;
+  }
+  .credential-band h2{
+    color: #fff;
+    max-width: 16ch;
+  }
+  .credential-grid{
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 48px;
+    align-items: start;
+    margin-top: 28px;
+  }
+  .credential-band .lead{
+    color: #fff;
+    font-weight: 600;
+    font-size: var(--fs-md);
+    margin-bottom: 12px;
+  }
+  .credential-band .lead ~ p{ color: rgba(255,255,255,0.82); }
+  .credential-list{
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .credential-list li{
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    color: rgba(255,255,255,0.92);
+    font-size: var(--fs-base);
+  }
+  .credential-list .icon{
+    flex: none;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.55);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 0.85rem;
+    margin-top: 2px;
+  }
+  @media (max-width: 820px){
+    .credential-grid{ grid-template-columns: 1fr; gap: 24px; }
+  }
+
   /* Header */
   header.site{
     padding: 18px 0;
@@ -234,15 +305,6 @@
     width: 100%;
     max-width: 420px;
     justify-self: end;
-  }
-  /* Scroll progress */
-  .scroll-progress{
-    position: fixed;
-    top: 0; left: 0;
-    height: 3px;
-    width: 0%;
-    background: var(--gold);
-    z-index: 50;
   }
 
   .hero-photo-img{
@@ -505,7 +567,6 @@
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
 
 <header class="site">
   <div class="wrap">
@@ -625,6 +686,25 @@
     </div>
   </section>
 
+  <section class="credential-band">
+    <div class="band-bg" aria-hidden="true"></div>
+    <div class="band-scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2>Legitimerad psykolog — vad innebär det?</h2>
+      <div class="credential-grid">
+        <div>
+          <p class="lead">Psykolog är en skyddad yrkestitel som endast får användas av den som har psykologlegitimation.</p>
+          <p>Som legitimerad psykolog arbetar jag under professionellt yrkesansvar och står under Socialstyrelsens tillsyn. Det innebär bland annat tystnadsplikt och journalföring enligt patientdatalagen.</p>
+        </div>
+        <ul class="credential-list">
+          <li><span class="icon" aria-hidden="true">→</span><span>Skyddad yrkestitel som kräver legitimation från Socialstyrelsen</span></li>
+          <li><span class="icon" aria-hidden="true">→</span><span>Tystnadsplikt och journalföring enligt patientdatalagen</span></li>
+          <li><span class="icon" aria-hidden="true">→</span><span>Anmäld hos IVO:s vårdgivarregister</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section id="faq">
     <div class="wrap">
       <div class="section-head"><h2>Vanliga frågor</h2></div>
@@ -713,25 +793,6 @@
     });
   });
 
-  // Reading progress bar
-  var progressEl = document.getElementById('scrollProgress');
-  var ticking = false;
-
-  function onScroll(){
-    var scrollTop = window.scrollY;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    if(progressEl) progressEl.style.width = pct + '%';
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function(){
-    if(!ticking){
-      window.requestAnimationFrame(onScroll);
-      ticking = true;
-    }
-  }, { passive: true });
-  onScroll();
 </script>
 
 </body>
