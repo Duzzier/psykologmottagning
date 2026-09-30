@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integritetspolicy — Ivan Wahlund</title>
+<meta name="description" content="Hur Ivan Wahlund Psykologi samlar in, använder och skyddar dina personuppgifter, samt vilka rättigheter du har enligt GDPR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream: #FFFFFF;
+  --cream-alt: #F3F5F6;
+  --ink: #16191B;
+  --ink-soft: #5B6469;
+  --olive: #1F5F6B;
+  --olive-deep: #174A54;
+  --gold: #1F5F6B;
+  --dark: #FFFFFF;
+  --dark-text: #16191B;
+  --line: #DEE3E5;
+  --max: 700px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --ease: cubic-bezier(.4,0,.2,1);
+  --transition-fast: 0.15s var(--ease);
+
+  --fs-2xs: 0.85rem;
+  --fs-xs: 0.92rem;
+  --fs-base: 1rem;
+  --fs-md: 1.1rem;
+  --fs-lg: 1.05rem;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body{
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3{
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 0.5em 0;
+  color: var(--ink);
+}
+
+a{ color: var(--olive-deep); }
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wrap{ max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+.prose{ max-width: var(--max); }
+
+header.site{
+  background: var(--dark);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+header.site .wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand{
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--dark-text);
+  text-decoration: none;
+}
+nav.primary ul{
+  display: flex;
+  gap: 26px;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+nav.primary li{ position: relative; }
+nav.primary a{
+  color: var(--dark-text);
+  text-decoration: none;
+  font-size: var(--fs-xs);
+  opacity: 0.92;
+  transition: opacity var(--transition-fast);
+}
+nav.primary a:hover{ opacity: 1; text-decoration: underline; }
+.nav-toggle{ display:none; }
+.menu-btn{
+  display:none;
+  background:none; border:1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 8px 12px; font-size: var(--fs-xs); cursor:pointer; color: var(--dark-text);
+}
+@media (max-width: 720px){
+  header.site .wrap{ position: relative; flex-wrap: wrap; }
+  nav.primary{
+    display:none;
+    width: 100%;
+    background: var(--dark);
+    padding: 10px 0 4px;
+  }
+  nav.primary ul{ flex-direction: column; padding: 8px 0 0; gap: 16px; }
+  .nav-toggle:checked ~ nav.primary{ display:block; }
+  .menu-btn{ display:inline-block; }
+}
+
+.page-hero{
+  background: var(--cream-alt);
+  padding: 56px 0 64px;
+}
+.page-hero .kicker{
+  color: var(--olive);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.page-hero h1{
+  color: var(--dark-text);
+  font-size: clamp(2.2rem, 5vw, 3.3rem);
+  line-height: 1.05;
+  margin-bottom: 0.4em;
+  max-width: 16ch;
+}
+.page-hero .lede{
+  color: var(--ink-soft);
+  font-size: var(--fs-md);
+  max-width: 46ch;
+}
+
+main{ padding: 64px 0 84px; }
+main h2{ font-size: 1.4rem; margin-top: 1.9em; }
+main h2:first-child{ margin-top: 0; }
+main p{ margin: 0 0 1em 0; }
+main .updated{ color: var(--ink-soft); font-size: var(--fs-2xs); margin-bottom: 2.2em; }
+main ul.tecken{
+  margin: 0 0 1.2em 0;
+  padding: 0;
+  list-style: none;
+}
+main ul.tecken li{
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+main ul.tecken li::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 19px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+mark.tbd{
+  background: #FBEFD9;
+  color: var(--ink);
+  padding: 0.05em 0.35em;
+  border-radius: 3px;
+  font-size: 0.92em;
+}
+
+.btn{
+  display: inline-block;
+  background: var(--olive);
+  color: #fff;
+  text-decoration: none;
+  padding: 13px 26px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  border: 1px solid var(--olive);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.btn:hover{ background: var(--olive-deep); transform: translateY(-2px); }
+
+.cta{ margin-top: 2.4em; padding-top: 2em; border-top: 1px solid var(--line); }
+.cta p{ color: var(--ink-soft); margin-bottom: 18px; }
+
+footer{
+  background: var(--dark);
+  color: rgba(22,25,27,0.6);
+  padding: 40px 0 50px;
+  font-size: var(--fs-2xs);
+  border-top: 1px solid rgba(22,25,27,0.12);
+}
+footer .grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
+footer h4{
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--dark-text);
+  font-size: var(--fs-2xs);
+  margin: 0 0 10px 0;
+}
+footer p{ margin: 0 0 6px 0; }
+footer ul{ list-style:none; margin:0; padding:0; }
+footer li{ margin-bottom: 6px; }
+footer a{ color: rgba(22,25,27,0.6); }
+@media (max-width: 700px){ footer .grid{ grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ivan Wahlund</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="menu-btn" aria-label="Öppna meny">Meny</label>
+    <nav class="primary" aria-label="Huvudmeny">
+      <ul>
+        <li><a href="index.html#om-mig">Om mig</a></li>
+        <li><a href="index.html#arbetssatt">Så går det till</a></li>
+        <li><a href="kbt.html">Vad är KBT?</a></li>
+        <li><a href="index.html#omraden">Vad jag kan hjälpa till med</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Integritet och dataskydd</p>
+    <h1>Integritetspolicy</h1>
+    <p class="lede">Hur dina personuppgifter samlas in, används och skyddas när du är i kontakt med mig eller går i behandling.</p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap prose">
+    <p class="updated">Senast uppdaterad: <mark class="tbd">[ANGE DATUM]</mark></p>
+
+    <h2>Vem är personuppgiftsansvarig?</h2>
+    <p>Ivan Wahlund Psykologi (enskild firma), org.nr <mark class="tbd">[ORG.NR HÄR]</mark>, är personuppgiftsansvarig för behandlingen av dina personuppgifter. Du når mig på <a href="mailto:kontakt@ivanwahlund.se">kontakt@ivanwahlund.se</a>.</p>
+
+    <h2>Vilka uppgifter samlar jag in?</h2>
+    <p>Vilka uppgifter som samlas in beror på hur du är i kontakt med mig:</p>
+    <ul class="tecken">
+      <li>Kontaktuppgifter du själv lämnar via boknings- eller kontaktformuläret, till exempel namn, e-postadress och det du skriver i meddelandet.</li>
+      <li>Uppgifter som uppkommer under en pågående behandling, till exempel journalanteckningar. Det räknas som känsliga personuppgifter (hälsouppgifter) och omfattas av extra skydd.</li>
+    </ul>
+
+    <h2>Varför samlar jag in uppgifterna, och med vilken rättslig grund?</h2>
+    <ul class="tecken">
+      <li>Kontaktuppgifter hanteras med stöd av ditt samtycke, för att jag ska kunna svara på din förfrågan och boka en tid med dig.</li>
+      <li>Journalföring sker med stöd av patientdatalagen och hälso- och sjukvårdslagstiftningen, som ställer krav på att vården dokumenteras.</li>
+    </ul>
+
+    <h2>Hur länge sparas uppgifterna?</h2>
+    <ul class="tecken">
+      <li>Journalanteckningar sparas i minst tio år efter den senaste anteckningen, enligt patientdatalagens krav.</li>
+      <li>Kontaktuppgifter från förfrågningar som inte leder till en bokad tid sparas inte längre än nödvändigt, och raderas normalt inom <mark class="tbd">[ANGE TIDSRAM, t.ex. 6 månader]</mark>.</li>
+    </ul>
+
+    <h2>Vem har tillgång till uppgifterna?</h2>
+    <p>Jag hanterar i första hand dina uppgifter själv. Om externa tjänster används för till exempel bokning, videosamtal eller journalföring är dessa personuppgiftsbiträden som hanterar uppgifterna enligt biträdesavtal och gällande dataskyddslagstiftning. <mark class="tbd">[KOMPLETTERA MED NAMN PÅ EVENTUELLA LEVERANTÖRER, T.EX. BOKNINGSSYSTEM ELLER VIDEOTJÄNST]</mark></p>
+
+    <h2>Cookies och analysverktyg</h2>
+    <p>Den här webbplatsen använder inga cookies för analys eller marknadsföring, och ingen tredjepartsspårning förekommer.</p>
+
+    <h2>Dina rättigheter</h2>
+    <p>Enligt dataskyddsförordningen (GDPR) har du rätt att:</p>
+    <ul class="tecken">
+      <li>Få information om vilka uppgifter som finns registrerade om dig (registerutdrag).</li>
+      <li>Begära rättelse av felaktiga eller ofullständiga uppgifter.</li>
+      <li>Begära radering av dina uppgifter, med undantag för journaluppgifter som omfattas av patientdatalagens krav på bevarande.</li>
+      <li>Begära att behandlingen av dina uppgifter begränsas.</li>
+      <li>Invända mot behandlingen.</li>
+      <li>Få ut dina uppgifter i ett maskinläsbart format (dataportabilitet), där det är tillämpligt.</li>
+    </ul>
+    <p>Vill du utöva någon av dessa rättigheter, kontakta mig på <a href="mailto:kontakt@ivanwahlund.se">kontakt@ivanwahlund.se</a>.</p>
+
+    <h2>Säkerhet</h2>
+    <p>Jag vidtar lämpliga tekniska och organisatoriska åtgärder för att skydda dina uppgifter mot obehörig åtkomst, förlust eller förändring.</p>
+
+    <h2>Klagomål</h2>
+    <p>Om du anser att dina personuppgifter hanteras felaktigt har du rätt att lämna in ett klagomål till Integritetsskyddsmyndigheten (IMY), som är tillsynsmyndighet för dataskydd i Sverige.</p>
+
+    <div class="cta">
+      <p>Har du frågor om hur dina uppgifter hanteras?</p>
+      <a class="btn" href="index.html#kontakt">Kontakta mig</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h4>Ivan Wahlund Psykologi</h4>
+        <p>Leg. psykolog · Enskild firma</p>
+        <p>Org.nr: [ORG.NR HÄR]</p>
+        <p>kontakt@ivanwahlund.se</p>
+      </div>
+      <div>
+        <h4>Verksamheten</h4>
+        <ul>
+          <li>Anmäld hos IVO:s vårdgivarregister</li>
+          <li><a href="index.html#">Patientsäkerhetsberättelse</a></li>
+          <li><a href="integritetspolicy.html">Integritetspolicy (GDPR)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Genvägar</h4>
+        <ul>
+          <li><a href="index.html#om-mig">Om mig</a></li>
+          <li><a href="index.html#omraden">Vad jag kan hjälpa till med</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('nav.primary > ul > li > a').forEach(function(link){
+    link.addEventListener('click', function(){
+      var toggle = document.getElementById('nav-toggle');
+      if(toggle) toggle.checked = false;
+    });
+  });
+</script>
+
+</body>
+</html>
