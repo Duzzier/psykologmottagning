@@ -79,6 +79,12 @@
     align-items: center;
   }
   .om-mig-grid .prose{ max-width: none; }
+  #omraden .om-mig-grid{ margin-bottom: 48px; }
+  @media (min-width: 901px){
+    #omraden .om-mig-grid{ align-items: end; }
+    #omraden .om-mig-photo{ aspect-ratio: 1 / 1; max-width: 340px; justify-self: end; }
+  }
+  #omraden .fit-list{ margin-bottom: 0; }
   .om-mig-photo{
     position: relative;
     overflow: hidden;
@@ -647,16 +653,11 @@
 
   <section id="om-mig">
     <div class="wrap">
-      <div class="om-mig-grid">
-        <div class="prose">
+      <div class="prose">
           <h2>Om mig</h2>
           <p>Jag är legitimerad psykolog som har gått psykologprogrammet på Karolinska Institutet och jag har arbetat både på BUP och inom specialistpsykiatrin för vuxna. Utöver mitt kliniska arbete har jag även jobbat på LSS-boende och med psykologisk forskning på KI. De huvudprinciper som alltid har präglat mina psykologiska behandlingar är värme, målmedvetenhet och forskningsbaserade komponenter. Det är min bestämda uppfattning att terapi som innehåller dessa delar kan hjälpa alla som önskar uppnå meningsfull förändring.</p>
           <p>Mitt terapeutiska hantverk är inte fäst vid en specifik mall, utan skräddarsys efter ditt behov. Jag tar hänsyn till olika delar som påverkar ditt mående och tillsammans formulerar vi en karta som kan förklara din situation och kan bana väg för terapeutisk förändring.</p>
           <p class="section-link"><a href="#arbetssatt">Läs mer om mitt arbetssätt</a></p>
-        </div>
-        <div class="om-mig-photo">
-          <img src="assets/images/skogsback-web.jpg" alt="Bäck som rinner genom grön skog" loading="lazy">
-        </div>
       </div>
     </div>
   </section>
@@ -689,16 +690,23 @@
 
   <section id="omraden">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Vad jag kan hjälpa till med</h2>
-        <p class="section-lede">I vårt möte tar jag hänsyn till dina behov och anpassar terapin efter din situation. Oavsett om du har en diagnos eller inte får du hos mig hjälp att växa som människa. Terapi hos mig passar dig som:</p>
+      <div class="om-mig-grid">
+        <div>
+          <div class="section-head">
+            <h2>Vad jag kan hjälpa till med</h2>
+            <p class="section-lede">I vårt möte tar jag hänsyn till dina behov och anpassar terapin efter din situation. Oavsett om du har en diagnos eller inte får du hos mig hjälp att växa som människa. Terapi hos mig passar dig som:</p>
+          </div>
+          <ul class="fit-list">
+            <li>Fastnar återkommande i negativa tankemönster</li>
+            <li>Vill ha konkreta verktyg för att hantera livets utmaningar</li>
+            <li>Söker stöd under en svår period eller livshändelse</li>
+            <li>Vill förstå dig själv bättre och utvecklas som person</li>
+          </ul>
+        </div>
+        <div class="om-mig-photo">
+          <img src="assets/images/skogsback-web.jpg" alt="Bäck som rinner genom grön skog" loading="lazy">
+        </div>
       </div>
-      <ul class="fit-list">
-        <li>Fastnar återkommande i negativa tankemönster</li>
-        <li>Vill ha konkreta verktyg för att hantera livets utmaningar</li>
-        <li>Söker stöd under en svår period eller livshändelse</li>
-        <li>Vill förstå dig själv bättre och utvecklas som person</li>
-      </ul>
       <ul class="areas-list">
         <li>Depression och nedstämdhet</li>
         <li>Alla typer av ångestbesvär</li>
