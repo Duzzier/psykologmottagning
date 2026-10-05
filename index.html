@@ -149,6 +149,11 @@
     margin-bottom: 12px;
   }
   .credential-band .lead ~ p{ color: rgba(255,255,255,0.82); }
+  .credential-list small{
+    display: block;
+    color: rgba(255,255,255,0.62);
+    font-size: var(--fs-2xs);
+  }
   .credential-list{
     list-style: none;
     margin: 0; padding: 0;
@@ -555,6 +560,46 @@
     padding-top: 46px;
   }
   @media (max-width: 780px){ .statement .contact-grid{ grid-template-columns: 1fr; } }
+  .statement-top{
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 56px;
+    align-items: center;
+    margin-bottom: 46px;
+  }
+  .statement-top .philosophy{ margin-bottom: 0; }
+  @media (max-width: 780px){
+    .statement-top{ grid-template-columns: 1fr; gap: 28px; }
+  }
+  .video-frame{
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 400px;
+    justify-self: end;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .video-frame img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+  }
+  .video-frame figcaption{
+    position: absolute;
+    left: 12px; bottom: 12px;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    background: rgba(22,25,27,0.62);
+    color: #fff;
+    font-size: var(--fs-2xs);
+    line-height: 1.4;
+  }
   .statement .contact-grid form{ display:flex; flex-direction:column; gap: 16px; }
   .field label{ display:block; font-size: var(--fs-2xs); color: rgba(22,25,27,0.7); margin-bottom: 6px; }
   .field input, .field textarea{
@@ -657,7 +702,6 @@
           <h2>Om mig</h2>
           <p>Jag är legitimerad psykolog som har gått psykologprogrammet på Karolinska Institutet och jag har arbetat både på BUP och inom specialistpsykiatrin för vuxna. Utöver mitt kliniska arbete har jag även jobbat på LSS-boende och med psykologisk forskning på KI. De huvudprinciper som alltid har präglat mina psykologiska behandlingar är värme, målmedvetenhet och forskningsbaserade komponenter. Det är min bestämda uppfattning att terapi som innehåller dessa delar kan hjälpa alla som önskar uppnå meningsfull förändring.</p>
           <p>Mitt terapeutiska hantverk är inte fäst vid en specifik mall, utan skräddarsys efter ditt behov. Jag tar hänsyn till olika delar som påverkar ditt mående och tillsammans formulerar vi en karta som kan förklara din situation och kan bana väg för terapeutisk förändring.</p>
-          <p class="section-link"><a href="#arbetssatt">Läs mer om mitt arbetssätt</a></p>
       </div>
     </div>
   </section>
@@ -733,14 +777,17 @@
       <h2>Legitimerad psykolog — vad innebär det?</h2>
       <div class="credential-grid">
         <div>
-          <p class="lead">Psykolog är en skyddad yrkestitel som endast får användas av den som har psykologlegitimation.</p>
-          <p>Som legitimerad psykolog arbetar jag under professionellt yrkesansvar och står under Socialstyrelsens tillsyn. Det innebär bland annat tystnadsplikt och journalföring enligt patientdatalagen.</p>
+          <p class="lead">Psykolog är en skyddad yrkestitel. För att få kalla sig legitimerad psykolog krävs legitimation från Socialstyrelsen.</p>
+          <p>Som legitimerad psykolog arbetar jag under professionellt yrkesansvar och står under tillsyn av Inspektionen för vård och omsorg (IVO). Det innebär att jag följer de lagar och regelverk som gäller för min legitimation.</p>
         </div>
-        <ul class="credential-list">
-          <li><span class="icon" aria-hidden="true">→</span><span>Skyddad yrkestitel som kräver legitimation från Socialstyrelsen</span></li>
-          <li><span class="icon" aria-hidden="true">→</span><span>Tystnadsplikt och journalföring enligt patientdatalagen</span></li>
-          <li><span class="icon" aria-hidden="true">→</span><span>Anmäld hos IVO:s vårdgivarregister</span></li>
-        </ul>
+        <div>
+          <ul class="credential-list">
+            <li><span class="icon" aria-hidden="true">→</span><span>Tystnadsplikt <small>Patientsäkerhetslagen</small></span></li>
+            <li><span class="icon" aria-hidden="true">→</span><span>Journalföring <small>Patientdatalagen</small></span></li>
+            <li><span class="icon" aria-hidden="true">→</span><span>Arbete i enlighet med vetenskap och beprövad erfarenhet <small>Patientsäkerhetslagen</small></span></li>
+            <li><span class="icon" aria-hidden="true">→</span><span>Skydd av dina personuppgifter <small>Dataskyddsförordningen (GDPR)</small></span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -768,7 +815,13 @@
 
   <section class="statement" id="kontakt">
     <div class="wrap">
-      <p class="philosophy">Terapi ska kännas trygg och begriplig från första samtalet: tydligt syfte, tydlig riktning, och utrymme att säga ifrån om något inte fungerar.</p>
+      <div class="statement-top">
+        <p class="philosophy">Terapi ska kännas trygg och begriplig från första samtalet: tydligt syfte, tydlig riktning, och utrymme att säga ifrån om något inte fungerar.</p>
+        <figure class="video-frame">
+          <img src="assets/images/videosamtal.jpg" alt="Ivan Wahlund tittar in i kameran under ett videosamtal" loading="lazy">
+          <figcaption>Ivan Wahlund</figcaption>
+        </figure>
+      </div>
 
       <div class="contact-grid">
         <div>
