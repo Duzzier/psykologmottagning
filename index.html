@@ -106,6 +106,65 @@
     .om-mig-photo{ order: -1; max-width: 360px; margin: 0 auto; }
   }
 
+  /* Fullskärms-hero med havsvideo */
+  .sea-hero{
+    position: relative;
+    height: calc(100svh - 64px);
+    min-height: 460px;
+    max-height: 920px;
+    overflow: hidden;
+    background: #33444c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+  }
+  .sea-hero video{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sea-scrim{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(22,25,27,0.16), rgba(22,25,27,0.4));
+  }
+  .sea-title{ position: relative; z-index: 1; padding: 0 28px; color: #fff; text-shadow: 0 1px 22px rgba(0,0,0,0.35); }
+  .sea-title h1{
+    color: #fff;
+    font-size: clamp(3.2rem, 9vw, 6.4rem);
+    line-height: 1;
+    margin: 0 0 0.2em;
+    letter-spacing: -0.01em;
+  }
+  .sea-kicker{
+    font-size: var(--fs-2xs);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    opacity: 0.92;
+  }
+  .sea-name{
+    font-family: 'EB Garamond', Garamond, Georgia, serif;
+    font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+  .sea-sub{ font-size: var(--fs-xs); opacity: 0.92; margin: 0; }
+  .intro{ padding: 64px 0 56px; }
+  .intro .lede{
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: var(--fs-md);
+    margin: 0 0 30px;
+  }
+  #om-mig .om-mig-photo{ aspect-ratio: 4 / 5; max-width: 380px; justify-self: end; }
+  @media (max-width: 900px){ #om-mig .om-mig-photo{ justify-self: center; } }
+
   /* Legitimerad psykolog band */
   .credential-band{
     position: relative;
@@ -662,12 +721,21 @@
 
 <main>
 
-  <section class="hero">
-    <div class="hero-inner">
-    <div class="hero-text">
-    <div class="hero-content">
-      <p class="hero-kicker">Psykoterapi över videosamtal</p>
-      <h1>Ivan<br>Wahlund</h1>
+  <section class="sea-hero">
+    <video id="seaVideo" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
+      <source src="assets/video/kandidat-6-360.mp4" type="video/mp4" media="(max-width: 700px)">
+      <source src="assets/video/kandidat-6-720.mp4" type="video/mp4">
+    </video>
+    <div class="sea-scrim" aria-hidden="true"></div>
+    <div class="sea-title">
+      <h1>Digital terapi</h1>
+      <p class="sea-name">Ivan Wahlund</p>
+      <p class="sea-sub">Leg. psykolog &middot; Online via videosamtal &middot; Svenska &amp; engelska</p>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
       <p class="lede">Nästan alla hamnar någon gång i en livssituation de har svårt att hantera. Ibland räcker de egna resurserna, men ibland behövs stöd för att navigera vidare och växa som människa. Kognitiv beteendeterapi har starkt forskningsstöd vid de flesta psykologiska tillstånd och är hjälpsam även vid livskriser, ensamhetskänslor, relationsproblem och sviktande självkänsla. Jag erbjuder terapi online, med flexibla tider och utan rigida ramar.</p>
       <div class="btn-row">
         <!-- KADDIO-INTEGRATION: byt href nedan mot din bokningslänk från Kaddio,
@@ -676,12 +744,6 @@
         <a class="btn" id="boka-tid-btn" href="#kontakt">Boka tid</a>
         <a class="btn ghost" href="#arbetssatt">Läs om mitt arbetssätt</a>
       </div>
-    </div>
-    <p class="hero-credentials">Leg. psykolog &middot; Online via videosamtal &middot; Svenska &amp; engelska</p>
-    </div>
-    <div class="hero-photo">
-      <img src="assets/images/ivan-hero.jpg" alt="Ivan Wahlund" class="hero-photo-img" loading="eager">
-    </div>
     </div>
   </section>
 
@@ -698,10 +760,15 @@
 
   <section id="om-mig">
     <div class="wrap">
-      <div class="prose">
+      <div class="om-mig-grid">
+        <div class="prose">
           <h2>Om mig</h2>
           <p>Jag är legitimerad psykolog som har gått psykologprogrammet på Karolinska Institutet och jag har arbetat både på BUP och inom specialistpsykiatrin för vuxna. Utöver mitt kliniska arbete har jag även jobbat inom LSS och med psykologisk forskning på KI. De huvudprinciper som alltid har präglat mina psykologiska behandlingar är värme, målmedvetenhet och forskningsbaserade komponenter. Det är min bestämda uppfattning att terapi som innehåller dessa delar kan hjälpa alla som önskar uppnå meningsfull förändring.</p>
           <p>Mitt terapeutiska hantverk är inte fäst vid en specifik mall, utan skräddarsys efter ditt behov. Jag tar hänsyn till olika delar som påverkar ditt mående och tillsammans formulerar vi en karta som kan förklara din situation och kan bana väg för terapeutisk förändring.</p>
+        </div>
+        <div class="om-mig-photo">
+          <img src="assets/images/ivan-hero.jpg" alt="Ivan Wahlund" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
@@ -879,6 +946,18 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    var v = document.getElementById('seaVideo');
+    if(!v) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      v.pause();
+    } else {
+      var p = v.play();
+      if(p && p.catch) p.catch(function(){});
+    }
+  })();
+</script>
 <script>
   document.querySelectorAll('nav.primary a').forEach(function(link){
     link.addEventListener('click', function(){
