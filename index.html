@@ -157,6 +157,25 @@
     margin: 0 0 10px;
   }
   .sea-sub{ font-size: var(--fs-xs); opacity: 0.92; margin: 0; }
+  .sea-scroll{
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+  .sea-scroll:hover{ opacity: 1; }
+  .sea-scroll svg{ width: 26px; height: 26px; filter: drop-shadow(0 1px 6px rgba(0,0,0,0.4)); }
+  .sea-scroll.is-hidden{ opacity: 0; pointer-events: none; }
+  #intro{ scroll-margin-top: 64px; }
   .intro{ padding: 64px 0 56px; text-align: center; }
   .intro .lede{
     max-width: 62ch;
@@ -534,7 +553,6 @@
   }
   .areas-list li{
     padding: 14px 0;
-    border-bottom: 1px solid var(--line);
     break-inside: avoid;
   }
   .areas-list li a{
@@ -735,9 +753,12 @@
       <p class="sea-name">Ivan Wahlund</p>
       <p class="sea-sub">Leg. psykolog &middot; Online via videosamtal &middot; Svenska &amp; engelska</p>
     </div>
+    <a class="sea-scroll" href="#intro" aria-label="Scrolla ner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>
+    </a>
   </section>
 
-  <section class="intro">
+  <section class="intro" id="intro">
     <div class="wrap">
       <p class="lede">Nästan alla hamnar någon gång i en livssituation de har svårt att hantera. Ibland räcker de egna resurserna, men ibland behövs stöd för att navigera vidare och växa som människa. Kognitiv beteendeterapi har starkt forskningsstöd vid de flesta psykologiska tillstånd och är hjälpsam även vid livskriser, ensamhetskänslor, relationsproblem och sviktande självkänsla. Jag erbjuder terapi online, med flexibla tider och utan rigida ramar.</p>
       <div class="btn-row">
@@ -835,7 +856,7 @@
         <li>Sömnproblem</li>
         <li>Ilska och aggression</li>
         <li>Prokrastinering</li>
-        <li>Neuropsykiatriska diagnoser som ADHD och autism</li>
+        <li>ADHD och autism</li>
       </ul>
     </div>
   </section>
@@ -959,6 +980,15 @@
       var p = v.play();
       if(p && p.catch) p.catch(function(){});
     }
+  })();
+</script>
+<script>
+  (function(){
+    var cue = document.querySelector('.sea-scroll');
+    if(!cue) return;
+    function update(){ cue.classList.toggle('is-hidden', window.scrollY > 40); }
+    window.addEventListener('scroll', update, {passive:true});
+    update();
   })();
 </script>
 <script>
