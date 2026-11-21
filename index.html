@@ -511,6 +511,7 @@
     padding-top: 28px;
     border-top: 1px solid var(--line);
   }
+  #faq .section-link{ border-top: none; }
   .section-link a{
     border-bottom: 1px solid currentColor;
     padding-bottom: 1px;
@@ -636,7 +637,6 @@
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    border-top: 1px solid var(--line);
     padding-top: 46px;
   }
   @media (max-width: 780px){ .statement .contact-grid{ grid-template-columns: 1fr; } }
@@ -704,7 +704,7 @@
     font-size: var(--fs-2xs);
     border-top: 1px solid rgba(22,25,27,0.12);
   }
-  footer .grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
+  footer .grid{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
   footer h4{
     font-family: 'Inter', sans-serif;
     font-weight: 600;
@@ -717,6 +717,20 @@
   footer li{ margin-bottom: 6px; }
   footer a{ color: rgba(22,25,27,0.6); }
   @media (max-width: 700px){ footer .grid{ grid-template-columns: 1fr; } }
+
+  /* Language placeholders */
+  header.site .wrap{ gap: 12px; }
+  .brand{ flex-shrink: 0; }
+  nav.primary{ margin-left: auto; }
+  nav.primary ul{ flex-wrap: wrap; justify-content: flex-end; }
+  .language-switch{ display: flex; gap: 6px; flex-shrink: 0; font-size: var(--fs-2xs); }
+  .language-switch a{ color: var(--ink-soft); text-decoration: none; }
+  .language-switch a:hover{ text-decoration: underline; }
+  .language-switch a[aria-current="page"]{ color: var(--ink); font-weight: 600; }
+  @media (max-width: 720px){
+    .menu-btn{ margin-left: auto; }
+    nav.primary ul{ justify-content: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -736,6 +750,11 @@
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
+    </nav>
+    <nav class="language-switch" aria-label="Språk">
+      <a href="#" lang="en" aria-label="English" onclick="event.preventDefault()">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href="#" lang="sv" aria-label="Svenska" aria-current="page" onclick="event.preventDefault()">SE</a>
     </nav>
   </div>
 </header>

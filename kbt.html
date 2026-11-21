@@ -295,6 +295,20 @@ footer li{ margin-bottom: 6px; }
 footer a{ color: rgba(22,25,27,0.6); }
 @media (max-width: 700px){ footer .grid{ grid-template-columns: 1fr; } }
 
+
+  /* Language placeholders */
+  header.site .wrap{ gap: 12px; }
+  .brand{ flex-shrink: 0; }
+  nav.primary{ margin-left: auto; }
+  nav.primary ul{ flex-wrap: wrap; justify-content: flex-end; }
+  .language-switch{ display: flex; gap: 6px; flex-shrink: 0; font-size: var(--fs-2xs); }
+  .language-switch a{ color: var(--ink-soft); text-decoration: none; }
+  .language-switch a:hover{ text-decoration: underline; }
+  .language-switch a[aria-current="page"]{ color: var(--ink); font-weight: 600; }
+  @media (max-width: 720px){
+    .menu-btn{ margin-left: auto; }
+    nav.primary ul{ justify-content: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -313,6 +327,11 @@ footer a{ color: rgba(22,25,27,0.6); }
         <li><a href="index.html#kontakt">Kontakt</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
+    </nav>
+    <nav class="language-switch" aria-label="Språk">
+      <a href="#" lang="en" aria-label="English" onclick="event.preventDefault()">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href="#" lang="sv" aria-label="Svenska" aria-current="page" onclick="event.preventDefault()">SE</a>
     </nav>
   </div>
 </header>
